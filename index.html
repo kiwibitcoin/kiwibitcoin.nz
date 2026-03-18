@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiwi Bitcoin — Bitcoin for Everyday Kiwis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --btc: #F7931A;
+      --btc-pale: rgba(247,147,26,0.09);
+      --bg: #ffffff;
+      --warm: #faf8f5;
+      --dark: #1c1a17;
+      --body: #5a5248;
+      --muted: #9a9088;
+      --border: #ece7df;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 6vw;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo em { font-style: normal; color: var(--btc); }
+
+    nav ul { list-style: none; display: flex; gap: 2.2rem; }
+
+    nav ul a {
+      color: var(--body);
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--btc); }
+
+    /* HERO */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 6vw 6rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btc-bg {
+      position: absolute;
+      right: 5vw;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(220px, 32vw, 420px);
+      height: clamp(220px, 32vw, 420px);
+      opacity: 0.18;
+      pointer-events: none;
+      user-select: none;
+      animation: coinFloat 6s ease-in-out infinite;
+    }
+
+    .btc-bg svg { width: 100%; height: 100%; }
+
+    @keyframes coinFloat {
+      0%, 100% { transform: translateY(-50%) translateY(0px); }
+      50% { transform: translateY(-50%) translateY(-16px); }
+    }
+
+    .hero-content { max-width: 640px; }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--btc);
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--dark);
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.7s 0.08s ease both;
+    }
+
+    h1 em { font-style: italic; color: var(--btc); }
+
+    .hero-sub {
+      font-size: 1.08rem;
+      color: var(--body);
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 2.4rem;
+      font-weight: 300;
+      animation: fadeUp 0.7s 0.16s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.24s ease both;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.9rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--btc);
+      color: #fff;
+      box-shadow: 0 2px 14px rgba(247,147,26,0.25);
+    }
+
+    .btn-primary:hover {
+      background: #f9a23a;
+      box-shadow: 0 4px 22px rgba(247,147,26,0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-soft {
+      background: var(--warm);
+      color: var(--dark);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-soft:hover {
+      background: #f0ebe2;
+      transform: translateY(-1px);
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--warm);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .trust-dot {
+      width: 6px; height: 6px;
+      background: var(--btc);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* CONTENT SECTIONS */
+    section.content-section { padding: 7rem 6vw; }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--btc-pale);
+      color: var(--btc);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 1.1rem;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 0.9rem;
+    }
+
+    h2 em { font-style: italic; color: var(--btc); }
+    h2 em::after { font-style: normal; }
+
+    .section-desc {
+      color: var(--body);
+      line-height: 1.8;
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* TWO COL */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      max-width: 1060px;
+    }
+
+    /* DOC PERKS */
+    .doc-perks { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+
+    .doc-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      font-size: 0.93rem;
+      color: var(--body);
+      line-height: 1.65;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-perks li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .perk-line {
+      width: 3px;
+      height: 100%;
+      min-height: 36px;
+      background: var(--btc);
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      opacity: 0.5;
+    }
+
+    .perk-text strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.93rem;
+      color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--warm);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 2.2rem;
+    }
+
+    .form-card h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.18rem;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-card > p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 0.9rem; }
+
+    label { font-size: 0.76rem; font-weight: 600; letter-spacing: 0.03em; color: var(--body); }
+
+    input, textarea {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.74rem 0.95rem;
+      color: var(--dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--btc);
+      box-shadow: 0 0 0 3px rgba(247,147,26,0.09);
+    }
+
+    input::placeholder, textarea::placeholder { color: #ccc5bc; }
+
+    textarea { min-height: 90px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+    .success-msg {
+      display: none;
+      background: #fff;
+      border: 1.5px solid rgba(247,147,26,0.28);
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+      color: var(--body);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin-top: 0.8rem;
+      font-weight: 300;
+    }
+
+    .success-msg strong { color: var(--btc); font-weight: 600; }
+
+    /* CALL FEATURES */
+    .call-features { display: flex; flex-direction: column; gap: 1.6rem; margin-bottom: 0; }
+
+    .call-feature { display: flex; gap: 1.1rem; align-items: flex-start; }
+
+    .feature-num {
+      width: 30px; height: 30px;
+      background: var(--btc);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.78rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.93rem;
+      color: var(--dark);
+      margin-bottom: 0.22rem;
+    }
+
+    .feature-text span { font-size: 0.87rem; color: var(--body); line-height: 1.65; font-weight: 300; }
+
+    /* DIVIDER */
+    .section-divider { border: none; border-top: 1px solid var(--border); }
+
+    /* FOOTER */
+    footer {
+      background: var(--warm);
+      border-top: 1px solid var(--border);
+      padding: 2rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1rem; color: var(--dark); }
+    .footer-logo em { font-style: normal; color: var(--btc); }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    footer a { color: var(--btc); text-decoration: none; font-size: 0.84rem; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .trust-bar { gap: 1.4rem; }
+      nav ul { gap: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home" class="nav-logo">Kiwi<em>Bitcoin</em></a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#infodoc">Free Guide</a></li>
+      <li><a href="#call">Book a Call</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home">
+    <div class="btc-bg">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Coin body -->
+        <circle cx="100" cy="100" r="96" fill="#F7931A"/>
+        <!-- Inner ring -->
+        <circle cx="100" cy="100" r="96" fill="none" stroke="#e8820f" stroke-width="2"/>
+        <!-- Coin sheen -->
+        <ellipse cx="72" cy="62" rx="28" ry="14" fill="rgba(255,255,255,0.15)" transform="rotate(-30 72 62)"/>
+        <!-- Bitcoin B -->
+        <text x="100" y="138" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="108" fill="#fff" opacity="0.95">₿</text>
+        <!-- Outer shadow ring -->
+        <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="3"/>
+      </svg>
+    </div>
+    <div class="hero-content">
+      <h1>Bitcoin, explained<br/>in plain <em>English.</em></h1>
+      <p class="hero-sub">
+        Kiwi Bitcoin is a helpful resource for everyday New Zealanders who want to learn about Bitcoin.
+      </p>
+      <div class="hero-btns">
+        <a href="#infodoc" class="btn btn-primary">Get the free guide</a>
+        <a href="#call" class="btn btn-soft">Book a call</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FREE GUIDE -->
+  <section id="infodoc" class="content-section">
+    <div class="two-col reveal">
+      <div>
+        <div class="section-tag">Free Resource</div>
+        <h2>A plain-English guide<br/>to <em>Bitcoin</em></h2>
+        <p class="section-desc">
+          I've put together a straightforward guide that answers the questions most people have but aren't sure where to ask.
+        </p>
+        <ul class="doc-perks">
+          <li>
+            <div class="perk-line"></div>
+            <div class="perk-text"><strong>What is Bitcoin, really?</strong>A clear, honest explanation of what it is and how it works.</div>
+          </li>
+          <li>
+            <div class="perk-line"></div>
+            <div class="perk-text"><strong>Is it safe?</strong>A balanced look at the real risks so you can make up your own mind.</div>
+          </li>
+          <li>
+            <div class="perk-line"></div>
+            <div class="perk-text"><strong>What does it mean for Kiwis?</strong>Local context.</div>
+          </li>
+          <li>
+            <div class="perk-line"></div>
+            <div class="perk-text"><strong>Common questions answered</strong>From how to buy to best practice for storage.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-card">
+        <h3>Request the free guide</h3>
+        <p>Enter your details and I'll send it straight to your inbox. No spam, ever.</p>
+        <form id="docForm" onsubmit="submitForm(event,'docForm','docSuccess','docEmailDisplay')">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="doc-name">First name</label>
+              <input type="text" id="doc-name" placeholder="e.g. Sam" required />
+            </div>
+            <div class="form-group">
+              <label for="doc-email">Email address</label>
+              <input type="email" id="doc-email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;">
+            Send me the guide
+          </button>
+        </form>
+        <div class="success-msg" id="docSuccess">
+          Your email app should have opened — just hit send and I'll get the guide over to <strong id="docEmailDisplay"></strong> shortly.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- BOOK A CALL -->
+  <section id="call" class="content-section">
+    <div class="two-col reveal">
+      <div>
+        <div class="section-tag">Book a Call</div>
+        <h2>Rather just have a<br/><em>conversation?</em></h2>
+        <p class="section-desc">
+          Sometimes it's easier to just talk it through. Book a call and ask whatever's on your mind. With over two years experience in Bitcoin and crypto, I'm sure I can provide you with some value.
+        </p>
+        <div class="call-features">
+          <div class="call-feature">
+            <div class="feature-num">1</div>
+            <div class="feature-text">
+              <strong>Tell me what you'd like to cover</strong>
+              <span>Fill in the short form with your questions — nothing is too basic. This will help me prepare for our call.</span>
+            </div>
+          </div>
+          <div class="call-feature">
+            <div class="feature-num">2</div>
+            <div class="feature-text">
+              <strong>I'll find a time that suits you</strong>
+              <span>I'll reply within 24 hours to arrange a time that works for you.</span>
+            </div>
+          </div>
+          <div class="call-feature">
+            <div class="feature-num">3</div>
+            <div class="feature-text">
+              <strong>Money for money's worth</strong>
+              <span>I only charge for my time if you feel you got value from our call. If you didn't find it useful, you don't pay a thing — you chose.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>Request a free call</h3>
+        <p>I'll get back to you within 24 hours to arrange a time.</p>
+        <form id="callForm" onsubmit="submitForm(event,'callForm','callSuccess','callEmailDisplay')">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="call-name">First name</label>
+              <input type="text" id="call-name" placeholder="e.g. Alex" required />
+            </div>
+            <div class="form-group">
+              <label for="call-email">Email address</label>
+              <input type="email" id="call-email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="call-msg">What would you like to talk about?</label>
+            <textarea id="call-msg" placeholder="e.g. I want to understand if Bitcoin is something I should look into..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;">
+            Request a call
+          </button>
+        </form>
+        <div class="success-msg" id="callSuccess">
+          Your email app should have opened — hit send and I'll be in touch with <strong id="callEmailDisplay"></strong> to arrange a time.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.4rem 6vw;text-align:center;">
+    <p style="font-size:0.82rem;color:var(--body);max-width:800px;margin:0 auto;line-height:1.7;"><strong style="color:var(--dark);">Disclaimer:</strong> I am not a financial advisor, tax advisor or lawyer and do not provide financial, tax or legal advice. This website, the KiwiBitcoin free guide and any resulting calls are for educational purposes only.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Kiwi<em>Bitcoin</em></div>
+    <p>© 2025 KiwiBitcoin.nz — Helping Kiwis understand Bitcoin.</p>
+    <a href="/cdn-cgi/l/email-protection#f59d9099999ab59e9c829c979c81969a9c9bdb9b8f"><span class="__cf_email__" data-cfemail="d0b8b5bcbcbf90bbb9a7b9b2b9a4b3bfb9befebeaa">[email&#160;protected]</span></a>
+  </footer>
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+    // Form handler
+    // Replace 'harry@kiwibitcoin.nz' with your real email address when you have one
+    function submitForm(e, formId, successId, emailDisplayId) {
+      e.preventDefault();
+      const form    = document.getElementById(formId);
+      const email   = form.querySelector('input[type="email"]').value;
+      const name    = form.querySelector('input[type="text"]').value;
+      const message = form.querySelector('textarea').value;
+      const isDoc   = formId === 'docForm';
+
+      const subject = encodeURIComponent(isDoc ? `Bitcoin Guide Request — ${name}` : `Free Call Request — ${name}`);
+      const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message || '(no additional message)'}`);
+
+      window.location.href = `mailto:hello@kiwibit
