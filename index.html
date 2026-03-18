@@ -418,10 +418,31 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
+      /* Nav */
+      nav { padding: 0.9rem 4vw; }
+      .nav-logo { font-size: 1.2rem; }
+      nav ul { gap: 1rem; }
+      nav ul a { font-size: 0.78rem; }
+
+      /* Hero */
+      #home { padding: 7rem 6vw 4rem; }
+      h1 { font-size: 2.4rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-btns { flex-direction: column; gap: 0.8rem; }
+      .btn { text-align: center; width: 100%; }
+      .btc-bg { opacity: 0.08; width: clamp(200px, 80vw, 340px); height: clamp(200px, 80vw, 340px); right: -10vw; }
+
+      /* Sections */
+      section.content-section { padding: 4rem 6vw; }
       .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
       .form-row { grid-template-columns: 1fr; }
-      .trust-bar { gap: 1.4rem; }
-      nav ul { gap: 1.4rem; }
+      h2 { font-size: 1.8rem; }
+
+      /* Form */
+      .form-card { padding: 1.6rem; }
+
+      /* Footer */
+      footer { flex-direction: column; text-align: center; gap: 0.6rem; padding: 1.5rem 6vw; }
     }
   </style>
 </head>
