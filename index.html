@@ -45,7 +45,7 @@
     .nav-logo {
       font-family: 'Fraunces', serif;
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.7rem;
       color: var(--dark);
       text-decoration: none;
       letter-spacing: -0.01em;
@@ -78,11 +78,11 @@
 
     .btc-bg {
       position: absolute;
-      right: 5vw;
+      right: 3vw;
       top: 50%;
       transform: translateY(-50%);
-      width: clamp(220px, 32vw, 420px);
-      height: clamp(220px, 32vw, 420px);
+      width: clamp(300px, 44vw, 620px);
+      height: clamp(300px, 44vw, 620px);
       opacity: 0.18;
       pointer-events: none;
       user-select: none;
@@ -112,7 +112,7 @@
     h1 {
       font-family: 'Fraunces', serif;
       font-weight: 700;
-      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
       line-height: 1.08;
       letter-spacing: -0.025em;
       color: var(--dark);
@@ -249,6 +249,7 @@
       gap: 6rem;
       align-items: start;
       max-width: 1060px;
+      margin: 0 auto;
     }
 
     /* DOC PERKS */
@@ -409,9 +410,8 @@
     }
 
     .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      opacity: 1;
+      transform: none;
     }
 
     .reveal.visible { opacity: 1; transform: none; }
@@ -440,15 +440,13 @@
   <section id="home">
     <div class="btc-bg">
       <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- Coin body -->
         <circle cx="100" cy="100" r="96" fill="#F7931A"/>
-        <!-- Inner ring -->
         <circle cx="100" cy="100" r="96" fill="none" stroke="#e8820f" stroke-width="2"/>
-        <!-- Coin sheen -->
         <ellipse cx="72" cy="62" rx="28" ry="14" fill="rgba(255,255,255,0.15)" transform="rotate(-30 72 62)"/>
-        <!-- Bitcoin B -->
-        <text x="100" y="138" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="108" fill="#fff" opacity="0.95">₿</text>
-        <!-- Outer shadow ring -->
+        <!-- Bitcoin B: original path spans roughly x:55-130, y:40-160. Centre is ~92,100. Shift to 100,100 -->
+        <g transform="translate(8,0)">
+          <path fill="#ffffff" d="M126.9,90.7c1.7-11.7-7.2-18-19.4-22.2l4-15.9l-9.7-2.4l-3.8,15.5c-2.6-0.6-5.2-1.2-7.8-1.8l3.9-15.6l-9.7-2.4l-4,15.9c-2.1-0.5-4.2-1-6.2-1.5l0,0L62,56.9l-2.6,10.4c0,0,7.2,1.6,7,1.7c3.9,1,4.6,3.5,4.5,5.6l-4.5,18.1c0.3,0.1,0.6,0.2,1,0.3c-0.3-0.1-0.7-0.2-1-0.2l-6.3,25.4c-0.5,1.2-1.7,3-4.4,2.3c0.1,0.1-7-1.7-7-1.7l-4.8,11.1l10.1,2.5c1.9,0.5,3.7,1,5.5,1.4l-4,16.1l9.7,2.4l4-15.9c2.7,0.7,5.3,1.4,7.8,2l-4,15.9l9.7,2.4l4-16.1c16.5,3.1,28.9,1.9,34.1-13.1c4.2-12-0.2-18.9-8.9-23.4C118.1,103.4,125.5,99.3,126.9,90.7z M107.5,122c-3,12-23.3,5.5-29.9,3.9l5.3-21.4C89.6,106.2,110.6,109.5,107.5,122z M110.5,90.5c-2.7,10.9-19.5,5.4-25,3.9l4.8-19.4C95.8,76.5,113.3,79.1,110.5,90.5z"/>
+        </g>
         <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="3"/>
       </svg>
     </div>
@@ -529,25 +527,24 @@
         <div class="section-tag">Book a Call</div>
         <h2>Rather just have a<br/><em>conversation?</em></h2>
         <p class="section-desc">
-          Sometimes it's easier to just talk it through. Book a call and ask whatever's on your mind. With over two years experience in Bitcoin and crypto, I'm sure I can provide you with some value.
+          Sometimes it's easier to just talk it through. Book a call and ask whatever's on your mind. With over two years experience in Bitcoin and crypto, I hope I can provide you with some value.
         </p>
         <div class="call-features">
           <div class="call-feature">
             <div class="feature-num">1</div>
             <div class="feature-text">
               <strong>Tell me what you'd like to cover</strong>
-              <span>Fill in the short form with your questions — nothing is too basic. This will help me prepare for our call.</span>
+              <span>Fill in the short form with your questions — nothing is too basic. This will help me prepare for our call. For example:</span>
+              <ul style="margin-top:0.5rem; margin-left:1.2rem; font-size:0.87rem; color:var(--muted); line-height:1.8;">
+                <li>Technical aspects of the network</li>
+                <li>Storage solutions and stress testing</li>
+                <li>How to buy Bitcoin safely in New Zealand — Swyftx vs Lightning Pay</li>
+                <li>UTXO management</li>
+              </ul>
             </div>
           </div>
           <div class="call-feature">
             <div class="feature-num">2</div>
-            <div class="feature-text">
-              <strong>I'll find a time that suits you</strong>
-              <span>I'll reply within 24 hours to arrange a time that works for you.</span>
-            </div>
-          </div>
-          <div class="call-feature">
-            <div class="feature-num">3</div>
             <div class="feature-text">
               <strong>Money for money's worth</strong>
               <span>I only charge for my time if you feel you got value from our call. If you didn't find it useful, you don't pay a thing — you chose.</span>
@@ -557,8 +554,8 @@
       </div>
 
       <div class="form-card">
-        <h3>Request a free call</h3>
-        <p>I'll get back to you within 24 hours to arrange a time.</p>
+        <h3>Request a call</h3>
+        <p>I'll get back to you to arrange a time.</p>
         <form id="callForm" onsubmit="submitForm(event,'callForm','callSuccess','callEmailDisplay')">
           <div class="form-row">
             <div class="form-group">
