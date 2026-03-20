@@ -409,39 +409,26 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .reveal {
-      opacity: 1;
-      transform: none;
-    }
-
+    .reveal { opacity: 1; transform: none; }
     .reveal.visible { opacity: 1; transform: none; }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      /* Nav */
       nav { padding: 0.9rem 4vw; }
       .nav-logo { font-size: 1.2rem; }
       nav ul { gap: 1rem; }
       nav ul a { font-size: 0.78rem; }
-
-      /* Hero */
       #home { padding: 7rem 6vw 4rem; }
       h1 { font-size: 2.4rem; }
       .hero-sub { font-size: 0.95rem; }
       .hero-btns { flex-direction: column; gap: 0.8rem; }
       .btn { text-align: center; width: 100%; }
       .btc-bg { opacity: 0.08; width: clamp(200px, 80vw, 340px); height: clamp(200px, 80vw, 340px); right: -10vw; }
-
-      /* Sections */
       section.content-section { padding: 4rem 6vw; }
       .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
       .form-row { grid-template-columns: 1fr; }
       h2 { font-size: 1.8rem; }
-
-      /* Form */
       .form-card { padding: 1.6rem; }
-
-      /* Footer */
       footer { flex-direction: column; text-align: center; gap: 0.6rem; padding: 1.5rem 6vw; }
     }
   </style>
@@ -453,7 +440,7 @@
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#infodoc">Free Guide</a></li>
-      <li><a href="#call">Book a Call</a></li>
+      <li><a href="#call">Book a Chat</a></li>
     </ul>
   </nav>
 
@@ -464,7 +451,6 @@
         <circle cx="100" cy="100" r="96" fill="#F7931A"/>
         <circle cx="100" cy="100" r="96" fill="none" stroke="#e8820f" stroke-width="2"/>
         <ellipse cx="72" cy="62" rx="28" ry="14" fill="rgba(255,255,255,0.15)" transform="rotate(-30 72 62)"/>
-        <!-- Bitcoin B: original path spans roughly x:55-130, y:40-160. Centre is ~92,100. Shift to 100,100 -->
         <g transform="translate(8,0)">
           <path fill="#ffffff" d="M126.9,90.7c1.7-11.7-7.2-18-19.4-22.2l4-15.9l-9.7-2.4l-3.8,15.5c-2.6-0.6-5.2-1.2-7.8-1.8l3.9-15.6l-9.7-2.4l-4,15.9c-2.1-0.5-4.2-1-6.2-1.5l0,0L62,56.9l-2.6,10.4c0,0,7.2,1.6,7,1.7c3.9,1,4.6,3.5,4.5,5.6l-4.5,18.1c0.3,0.1,0.6,0.2,1,0.3c-0.3-0.1-0.7-0.2-1-0.2l-6.3,25.4c-0.5,1.2-1.7,3-4.4,2.3c0.1,0.1-7-1.7-7-1.7l-4.8,11.1l10.1,2.5c1.9,0.5,3.7,1,5.5,1.4l-4,16.1l9.7,2.4l4-15.9c2.7,0.7,5.3,1.4,7.8,2l-4,15.9l9.7,2.4l4-16.1c16.5,3.1,28.9,1.9,34.1-13.1c4.2-12-0.2-18.9-8.9-23.4C118.1,103.4,125.5,99.3,126.9,90.7z M107.5,122c-3,12-23.3,5.5-29.9,3.9l5.3-21.4C89.6,106.2,110.6,109.5,107.5,122z M110.5,90.5c-2.7,10.9-19.5,5.4-25,3.9l4.8-19.4C95.8,76.5,113.3,79.1,110.5,90.5z"/>
         </g>
@@ -478,12 +464,10 @@
       </p>
       <div class="hero-btns">
         <a href="#infodoc" class="btn btn-primary">Get the free guide</a>
-        <a href="#call" class="btn btn-soft">Book a call</a>
+        <a href="#call" class="btn btn-soft">Book a chat</a>
       </div>
     </div>
   </section>
-
-
 
   <!-- FREE GUIDE -->
   <section id="infodoc" class="content-section">
@@ -517,7 +501,7 @@
       <div class="form-card">
         <h3>Request the free guide</h3>
         <p>Enter your details and I'll send it straight to your inbox. No spam, ever.</p>
-        <form id="docForm" onsubmit="submitForm(event,'docForm','docSuccess','docEmailDisplay')">
+        <form id="docForm" onsubmit="submitDocForm(event)">
           <div class="form-row">
             <div class="form-group">
               <label for="doc-name">First name</label>
@@ -533,7 +517,7 @@
           </button>
         </form>
         <div class="success-msg" id="docSuccess">
-          Your email app should have opened — just hit send and I'll get the guide over to <strong id="docEmailDisplay"></strong> shortly.
+          <strong>Thanks!</strong> I'll get the guide over to you shortly.
         </div>
       </div>
     </div>
@@ -541,25 +525,25 @@
 
   <hr class="section-divider" />
 
-  <!-- BOOK A CALL -->
+  <!-- BOOK A CHAT -->
   <section id="call" class="content-section">
     <div class="two-col reveal">
       <div>
-        <div class="section-tag">Book a Call</div>
+        <div class="section-tag">Book a Chat</div>
         <h2>Rather just have a<br/><em>conversation?</em></h2>
         <p class="section-desc">
-          Sometimes it's easier to just talk it through. Book a call and ask whatever's on your mind. With over two years experience in Bitcoin and crypto, I hope I can provide you with some value.
+          Sometimes it's easier to just talk it through — whether that's a call or a quick email exchange, whatever works best for you. Book a chat and ask whatever's on your mind.
         </p>
         <div class="call-features">
           <div class="call-feature">
             <div class="feature-num">1</div>
             <div class="feature-text">
               <strong>Tell me what you'd like to cover</strong>
-              <span>Fill in the short form with your questions — nothing is too basic. This will help me prepare for our call. For example:</span>
+              <span>Fill in the short form with your questions — nothing is too basic. For example:</span>
               <ul style="margin-top:0.5rem; margin-left:1.2rem; font-size:0.87rem; color:var(--muted); line-height:1.8;">
                 <li>Technical aspects of the network</li>
                 <li>Storage solutions and stress testing</li>
-                <li>How to buy Bitcoin safely in New Zealand — Swyftx vs Lightning Pay</li>
+                <li>How to buy Bitcoin safely in New Zealand</li>
                 <li>UTXO management</li>
               </ul>
             </div>
@@ -568,16 +552,16 @@
             <div class="feature-num">2</div>
             <div class="feature-text">
               <strong>Money for money's worth</strong>
-              <span>I only charge for my time if you feel you got value from our call. If you didn't find it useful, you don't pay a thing — you chose.</span>
+              <span>There's no fixed fee. If you found value in our conversation, you choose what to pay — if you didn't, you pay nothing. It's entirely up to you.</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="form-card">
-        <h3>Request a call</h3>
-        <p>I'll get back to you to arrange a time.</p>
-        <form id="callForm" onsubmit="submitForm(event,'callForm','callSuccess','callEmailDisplay')">
+        <h3>Book a chat</h3>
+        <p>A call or an email exchange — whatever suits you. I'll be in touch to arrange it.</p>
+        <form id="callForm" onsubmit="submitCallForm(event)">
           <div class="form-row">
             <div class="form-group">
               <label for="call-name">First name</label>
@@ -593,29 +577,28 @@
             <textarea id="call-msg" placeholder="e.g. I want to understand if Bitcoin is something I should look into..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;">
-            Request a call
+            Book a chat
           </button>
         </form>
         <div class="success-msg" id="callSuccess">
-          Your email app should have opened — hit send and I'll be in touch with <strong id="callEmailDisplay"></strong> to arrange a time.
+          <strong>Thanks!</strong> I'll be in touch to arrange a time.
         </div>
       </div>
     </div>
   </section>
 
   <div style="background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.4rem 6vw;text-align:center;">
-    <p style="font-size:0.82rem;color:var(--body);max-width:800px;margin:0 auto;line-height:1.7;"><strong style="color:var(--dark);">Disclaimer:</strong> I am not a financial advisor, tax advisor or lawyer and do not provide financial, tax or legal advice. This website, the KiwiBitcoin free guide and any resulting calls are for educational purposes only.</p>
+    <p style="font-size:0.82rem;color:var(--body);max-width:800px;margin:0 auto;line-height:1.7;"><strong style="color:var(--dark);">Disclaimer:</strong> I am not a financial advisor, tax advisor or lawyer and do not provide financial, tax or legal advice. This website, the KiwiBitcoin free guide and any resulting discourse are for educational purposes only.</p>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Kiwi<em>Bitcoin</em></div>
     <p>© 2025 KiwiBitcoin.nz — Helping Kiwis understand Bitcoin.</p>
-    <a href="/cdn-cgi/l/email-protection#f59d9099999ab59e9c829c979c81969a9c9bdb9b8f"><span class="__cf_email__" data-cfemail="d0b8b5bcbcbf90bbb9a7b9b2b9a4b3bfb9befebeaa">[email&#160;protected]</span></a>
+    <a href="mailto:harry@kiwibitcoin.nz">harry@kiwibitcoin.nz</a>
   </footer>
 
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // Scroll reveal
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
@@ -623,17 +606,47 @@
     );
     document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-    // Form handler
-    // Replace 'harry@kiwibitcoin.nz' with your real email address when you have one
-    function submitForm(e, formId, successId, emailDisplayId) {
+    // Free guide form — Formspree
+    async function submitDocForm(e) {
       e.preventDefault();
-      const form    = document.getElementById(formId);
-      const email   = form.querySelector('input[type="email"]').value;
-      const name    = form.querySelector('input[type="text"]').value;
-      const message = form.querySelector('textarea').value;
-      const isDoc   = formId === 'docForm';
+      const name  = document.getElementById('doc-name').value;
+      const email = document.getElementById('doc-email').value;
+      try {
+        const res = await fetch('https://formspree.io/f/xwvrzajb', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email })
+        });
+        if (res.ok) {
+          document.getElementById('docForm').style.display = 'none';
+          document.getElementById('docSuccess').style.display = 'block';
+        }
+      } catch(err) {
+        alert('Something went wrong — please email harry@kiwibitcoin.nz directly.');
+      }
+    }
 
-      const subject = encodeURIComponent(isDoc ? `Bitcoin Guide Request — ${name}` : `Free Call Request — ${name}`);
-      const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message || '(no additional message)'}`);
+    // Book a chat form — Formspree
+    async function submitCallForm(e) {
+      e.preventDefault();
+      const name    = document.getElementById('call-name').value;
+      const email   = document.getElementById('call-email').value;
+      const message = document.getElementById('call-msg').value;
+      try {
+        const res = await fetch('https://formspree.io/f/xaqpkazv', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+        if (res.ok) {
+          document.getElementById('callForm').style.display = 'none';
+          document.getElementById('callSuccess').style.display = 'block';
+        }
+      } catch(err) {
+        alert('Something went wrong — please email harry@kiwibitcoin.nz directly.');
+      }
+    }
+  </script>
 
-      window.location.href = `mailto:hello@kiwibit
+</body>
+</html>
