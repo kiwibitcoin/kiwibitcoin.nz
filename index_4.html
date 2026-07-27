@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiwi Bitcoin</title>
+  <meta name="description" content="Kiwi Bitcoin"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background:#fff;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      font-family:'Georgia',serif;
+      overflow:hidden;
+    }
+    .scene {
+      position:relative;
+      width:380px;
+      height:260px;
+    }
+    .kiwi {
+      position:absolute;
+      bottom:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:380px;
+    }
+    .coin {
+      position:absolute;
+      top:-50px;
+      left:196px;
+      width:58px;
+      height:58px;
+      animation:drop 2.2s ease-in infinite;
+      z-index:10;
+    }
+    @keyframes drop {
+      0%   { top:-50px; opacity:1; transform:rotateY(0deg); }
+      54%  { top:10px;  opacity:1; transform:rotateY(540deg); }
+      62%  { top:10px;  opacity:0; }
+      100% { top:-50px; opacity:0; }
+    }
+    .logo {
+      font-size:2.2rem;
+      font-weight:700;
+      color:#111;
+      letter-spacing:-0.02em;
+      margin-top:1rem;
+    }
+    .logo span { color:#F7931A; }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <img class="kiwi" src="kiwi_shape.png" alt="Kiwi Bitcoin"/>
+    <div class="coin">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="23" fill="#F7931A" stroke="#d97e10" stroke-width="1.5"/>
+        <text x="24" y="31" text-anchor="middle" font-size="22" font-weight="bold" fill="white" font-family="Arial">₿</text>
+      </svg>
+    </div>
+  </div>
+  <div class="logo">Kiwi<span>Bitcoin</span></div>
+</body>
+</html>
